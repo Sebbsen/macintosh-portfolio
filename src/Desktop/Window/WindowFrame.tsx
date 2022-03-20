@@ -13,7 +13,6 @@ export const WindowFrame = ({ active, title, content }: WindowFrameProps) => {
     
     const style = {
         width: '184px',
-        transform: 'translate(62px, 27px)'
     };
     
     
