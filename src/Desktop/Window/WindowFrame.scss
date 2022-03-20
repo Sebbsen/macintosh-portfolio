@@ -1,0 +1,76 @@
+@import "/src/scss/Vars.scss";
+
+.window-frame {
+    min-height: 165px;
+    background-color: $window-bg-color;
+    border: 1px solid $border-color;
+    box-shadow: 1px 1px 0 0 $border-color;
+    
+    &__header {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid $border-color;
+        height: 18px;
+        z-index: 0;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 1px;
+            top: 3px;
+            width: calc(100% - 2px);
+            height: 1px;
+            background: $border-color;
+            box-shadow: 0px 2px 0px 0px $border-color, 
+                        0px 4px 0px 0px $border-color, 
+                        0px 6px 0px 0px $border-color, 
+                        0px 8px 0px 0px $border-color, 
+                        0px 10px 0px 0px $border-color;
+            z-index: -1;
+        }
+    }
+
+    &__title {
+        background-color: white;
+        padding: 0 0.25rem;
+        margin: 0;
+    }
+
+    &__btn {
+        width: 11px;
+        height: 11px;
+        background-color: white;
+        border: 1px solid black;
+        margin: 0 0.5rem;
+        box-shadow: 0px 0px 0px 1px white;
+
+        &--size {
+            position: relative;
+
+            &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 6px;
+                height: 6px;
+                top: 0;
+                left: 0;
+                border: 1px solid $border-color;
+                border-left: 0;
+                border-top: 0;
+            }
+        }
+    }
+
+    &--inactive {
+        .window-frame__btn, .window-frame__header::before {
+            opacity: 0;
+        }
+    }
+
+    &__main {
+        padding: 1.25rem 1rem;
+    }
+}
