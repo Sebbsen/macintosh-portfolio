@@ -1,0 +1,50 @@
+@import "/src/scss/Vars.scss";
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1.25rem;
+    background-color: $window-bg-color;
+    border-bottom: 1px solid $border-color;
+    height: 20px;
+
+    &__section {
+        display: flex;
+        align-items: center;
+    }
+
+    &__section--right {
+        align-items: flex-start;
+    }
+
+    &__item {
+        padding: 0.1rem 0.5rem;
+
+        &:hover {
+            background-color: $marker-color;
+            color: $inverted-marker-color;
+
+            .active {
+                display: inline;
+            }
+            .inactive {
+                display: none;
+            }
+        }
+        
+        .active {
+            display: none;
+        }
+
+        &--icon {
+            padding-bottom: 1px;
+            display: block;
+
+            &:hover {    
+                .active {
+                    display: block;
+                }
+            }
+        }
+    }
+}
