@@ -1,0 +1,9 @@
+@import "/src/scss/Vars.scss";
+
+.desktop {
+    width: 512px;
+    height: 344px;
+    background-color: $desktop-bg-color;
+    border-radius: 8px;
+    border: 1px solid $border-color;
+}
