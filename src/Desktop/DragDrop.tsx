@@ -22,7 +22,7 @@ export const DragDrop = ({ desktopRef, innerComponent, defaultPosition, active, 
     };
 
 
-    const drag = (e) => {
+    const drag = (e: object) => {
         onMouseDownHandleActiveWindow();
         const currentDesktopBounding = desktopRef.current.getBoundingClientRect()
         setDesktopBounding(currentDesktopBounding)
@@ -34,14 +34,14 @@ export const DragDrop = ({ desktopRef, innerComponent, defaultPosition, active, 
         setIsDragging(true)
     }
     
-    const drop = (e) => {
+    const drop = () => {
         setIsDragging(false)       
     }
 
-    const handleDrag = (e) => {
+    const handleDrag = (e: object) => {
         const mouseNewX = e.clientX - desktopBounding.left
         const mouseNewY = e.clientY - desktopBounding.top
-        
+
         const MouseChangedX = mouseNewX - mouseOld.x
         const MouseChangedY = mouseNewY - mouseOld.y
         
@@ -49,6 +49,20 @@ export const DragDrop = ({ desktopRef, innerComponent, defaultPosition, active, 
         const objNewY = position.y + MouseChangedY
         
         setPosition({x:objNewX, y:objNewY})
+
+        handleOverflow(mouseNewX, mouseNewY)
+    }
+
+    const handleOverflow = (mouseNewX: number, mouseNewY: number) => {
+        if (
+            mouseNewX < 0 || 
+            mouseNewX > desktopRef.current.offsetWidth ||
+            mouseNewY < 0 || 
+            mouseNewY > desktopRef.current.offsetHeight
+            ) {
+            
+            drop()
+        }
     }
     
     useEffect(() => {
