@@ -4,11 +4,14 @@ import './DragDrop.scss'
 type DragDropProps = {
     innerComponent: object,
     desktopRef: object,
+    defaultPosition: {x: number,y: number},
+    active: boolean,
+    onMouseDownHandleActiveWindow:()=>void
 }
 
-export const DragDrop = ({ desktopRef, innerComponent }: DragDropProps) => {
+export const DragDrop = ({ desktopRef, innerComponent, defaultPosition, active, onMouseDownHandleActiveWindow }: DragDropProps) => {
 
-    const [position, setPosition] = useState({x: 62, y: 47})
+    const [position, setPosition] = useState({x: defaultPosition.x, y: defaultPosition.y})
     const [isDragging, setIsDragging] = useState(false)
     const [desktopBounding, setDesktopBounding] = useState({})
     const [mouseOld, setMouseOld] = useState({x: 0, y: 0})
@@ -20,8 +23,9 @@ export const DragDrop = ({ desktopRef, innerComponent }: DragDropProps) => {
 
 
     const drag = (e) => {
+        onMouseDownHandleActiveWindow();
         const currentDesktopBounding = desktopRef.current.getBoundingClientRect()
-        setDesktopBounding(currentDesktopBounding);
+        setDesktopBounding(currentDesktopBounding)
         
         setMouseOld({
             x: e.clientX - currentDesktopBounding.left,
@@ -55,7 +59,7 @@ export const DragDrop = ({ desktopRef, innerComponent }: DragDropProps) => {
 
 
     return (
-        <div className="drag-drop" style={style} onMouseDown={ drag } onMouseUp={ drop }>
+        <div className={"drag-drop " + (active ? 'drag-drop--active' : '')} style={style} onMouseDown={ drag } onMouseUp={ drop }>
             {innerComponent}
         </div>
     )
