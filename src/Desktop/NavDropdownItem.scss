@@ -1,0 +1,56 @@
+@import "/src/scss/Vars.scss";
+
+.nav-dropdown-item {
+    position: relative;
+
+    &:hover {
+        .nav-dropdown-item__dropdown{
+            display: flex;
+        }
+    }
+
+    &__dropdown {
+        position: absolute;
+        display: none;
+        flex-direction: column;
+        color: $text-color;
+        border: 1px solid $border-color;
+        box-shadow: 1px 1px 0 0 $border-color;
+        top: 19px;
+        left: 0;
+        width: 150px;
+        background-color: white;
+        z-index: 999;
+    }
+
+    &__dropdown-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.15rem 0.75rem;
+        text-align: left;
+        
+        &:hover {
+            background-color: $marker-color;
+            color: $inverted-marker-color;
+
+            .icon-inactive {
+                display: none;
+            }
+
+            .icon-active {
+                display: inline;
+            }
+        }
+
+        .icon-active {
+            display: none;
+        }
+
+        &--inactive {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+    }
+}

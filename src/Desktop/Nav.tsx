@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
 import './Nav.scss'
 
-import logo from '../icons/apple-logo.svg';
-import logoWhite from '../icons/apple-white-logo.svg';
 import helpIcon from '../icons/help-icon.svg';
 import helpWhiteIcon from '../icons/help-white-icon.svg';
 import systemIcon from '../icons/system-icon.svg';
 import systemWhiteIcon from '../icons/system-white-icon.svg';
+import note from '../icons/note-icon.svg';
+import noteWhite from '../icons/note-white-icon.svg';
+import game from '../icons/game-icon.svg';
+import gameWhite from '../icons/game-white-icon.svg';
+import threeD from '../icons/3d-icon.svg';
+import threeDWhite from '../icons/3d-white-icon.svg';
+import { NavDropdownItem } from "./NavDropdownItem";
 
 type NavProps = {
     currentWindow: string
@@ -26,13 +31,43 @@ export const Nav = ({ currentWindow }: NavProps) => {
     return (
         <nav className="nav headline">
             <div className="nav__section">
-                <button className="nav__item button">
-                    <img src={logo} className="inactive" alt="apple-logo" />
-                    <img src={logoWhite} className="active" alt="apple-logo" />
-                </button>
-                <button className="nav__item button">File</button>
-                <button className="nav__item button">Edit</button>
-                <button className="nav__item button">view</button>
+                <NavDropdownItem 
+                    title="Logo" 
+                    list={[
+                        {icon: undefined, text: 'About Me', active: true},
+                        {icon: undefined, text: '---', active: true},
+                        {icon: {normal: note, white: noteWhite}, text: 'Note', active: true},
+                        {icon: {normal: threeD, white: threeDWhite}, text: 'Future Shit', active: false},
+                        {icon: {normal: game, white: gameWhite}, text: 'Game', active: false},
+                    ]}
+                />
+                <NavDropdownItem 
+                    title="File" 
+                    list={[
+                        {icon: undefined, text: 'Add Note', active: true},
+                        {icon: undefined, text: 'Delete Note', active: true},
+                        {icon: undefined, text: 'Copy Note', active: false},
+                        {icon: undefined, text: '---', active: true},
+                        {icon: undefined, text: 'Print', active: false},
+                    ]}
+                />
+                <NavDropdownItem 
+                    title="Edit" 
+                    list={[
+                        {icon: undefined, text: 'Add Note', active: true},
+                        {icon: undefined, text: 'Delete Note', active: true},
+                        {icon: undefined, text: 'Copy Note', active: false},
+                        {icon: undefined, text: '---', active: true},
+                        {icon: undefined, text: 'Print', active: false},
+                    ]}
+                />
+                <NavDropdownItem 
+                    title="View" 
+                    list={[
+                        {icon: undefined, text: 'Close Window', active: true},
+                        {icon: undefined, text: 'Maximize', active: true},
+                    ]}
+                />
             </div>
             <div className="nav__section nav__section--right">
                 <button className="nav__item nav__item--icon button">
