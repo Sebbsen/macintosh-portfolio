@@ -3,11 +3,12 @@ import { Nav } from "./Nav"
 import './Desktop.scss'
 import { WindowFrame } from "./Window/WindowFrame"
 import { DragDrop } from "./DragDrop"
+import { AboutMeContent } from "./AboutMeContent";
 
 export const Desktop = () => {
     const desktopMainRef = useRef(null);
 
-    const [activeWindow, setActiveWindow] = useState(1)
+    const [activeWindow, setActiveWindow] = useState(2)
 
     const handleActiveWindow = (id: number) => {
         setActiveWindow(id);
@@ -20,27 +21,19 @@ export const Desktop = () => {
             </header>
             <main ref={desktopMainRef} className="desktop__main">
                 <DragDrop
-                    defaultPosition={{x:62, y: 42}} 
+                    defaultPosition={{x:31, y: 24}} 
                     desktopRef={desktopMainRef} 
-                    innerComponent={<WindowFrame title="Note - Todos1" content="Lorem Ipsum dolor Santis est" active={activeWindow === 1} />}
+                    innerComponent={<WindowFrame title="Note - Todos1" content="Lorem Ipsum dolor Santis est" active={activeWindow === 1} width="189px" />}
                     active={activeWindow === 1}
                     onMouseDownHandleActiveWindow={() => handleActiveWindow(1)}
                     dragAreaFromTop={20}
                 />
                 <DragDrop 
-                    defaultPosition={{x:82, y: 62}} 
+                    defaultPosition={{x:89, y: 90}} 
                     desktopRef={desktopMainRef} 
-                    innerComponent={<WindowFrame title="Note - Todos2" content="Lorem Ipsum dolor Santis est" active={activeWindow === 2} />}
+                    innerComponent={<WindowFrame title="About Me" content={<AboutMeContent />} active={activeWindow === 2} width="375px" />}
                     active={activeWindow === 2}
                     onMouseDownHandleActiveWindow={() => handleActiveWindow(2)}
-                    dragAreaFromTop={20}
-                />
-                <DragDrop 
-                    defaultPosition={{x:102, y: 82}} 
-                    desktopRef={desktopMainRef} 
-                    innerComponent={<WindowFrame title="Note - Todos3" content="Lorem Ipsum dolor Santis est" active={activeWindow === 3} />}
-                    active={activeWindow === 3}
-                    onMouseDownHandleActiveWindow={() => handleActiveWindow(3)}
                     dragAreaFromTop={20}
                 />
             </main>

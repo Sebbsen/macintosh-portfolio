@@ -4,15 +4,16 @@ import './WindowFrame.scss'
 type WindowFrameProps = {
     active: boolean,
     title: string,
-    content: string
+    content: string | object,
+    width: string
 }
 
-export const WindowFrame = ({ active, title, content }: WindowFrameProps) => {
+export const WindowFrame = ({ active, title, content, width }: WindowFrameProps) => {
 
     const [varName, setVarName] = useState('defaultValue');
     
     const style = {
-        width: '184px',
+        width: width
     };
     
     
