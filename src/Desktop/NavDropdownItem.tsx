@@ -19,23 +19,25 @@ export const NavDropdownItem = ({ title, list }: NavDropdownItemProps) => {
 
 
     return (
-        <button className="nav__item nav-dropdown-item button">
-            {title === 'Logo' &&
-                <span>
-                    <img src={logo} className="inactive" alt="apple-logo" />
-                    <img src={logoWhite} className="active" alt="apple-logo" />
-                </span>
-                ||
-                <span>{title}</span>
-            }
+        <div className="nav__item nav-dropdown-item">
+            <button className="button">
+                {title === 'Logo' &&
+                    <span>
+                        <img src={logo} className="inactive" alt="apple-logo" />
+                        <img src={logoWhite} className="active" alt="apple-logo" />
+                    </span>
+                    ||
+                    <span>{title}</span>
+                }
+            </button>
 
             <div className="nav-dropdown-item__dropdown">
-                {list.map((item) => {
+                {list.map((item, i) => {
                     if (item.text === '---') {
-                        return (<hr />)
+                        return (<hr key={i} />)
                     } 
                     return (
-                            <button className={"button nav-dropdown-item__dropdown-btn " + (!item.active ? 'nav-dropdown-item__dropdown-btn--inactive' : '')}>
+                            <button key={i} className={"button nav-dropdown-item__dropdown-btn " + (!item.active ? 'nav-dropdown-item__dropdown-btn--inactive' : '')}>
                                 {item.icon &&
                                     <span>
                                         <img src={item.icon?.normal} className="icon-inactive" alt="" />
@@ -48,6 +50,6 @@ export const NavDropdownItem = ({ title, list }: NavDropdownItemProps) => {
                 }
                 )}
             </div>
-        </button>
+        </div>
     )
 }
