@@ -6,10 +6,11 @@ type DragDropProps = {
     desktopRef: object,
     defaultPosition: {x: number,y: number},
     active: boolean,
-    onMouseDownHandleActiveWindow:()=>void
+    onMouseDownHandleActiveWindow:()=>void,
+    dragAreaFromTop: number | boolean
 }
 
-export const DragDrop = ({ desktopRef, innerComponent, defaultPosition, active, onMouseDownHandleActiveWindow }: DragDropProps) => {
+export const DragDrop = ({ desktopRef, innerComponent, defaultPosition, active, onMouseDownHandleActiveWindow, dragAreaFromTop }: DragDropProps) => {
 
     const [position, setPosition] = useState({x: defaultPosition.x, y: defaultPosition.y})
     const [isDragging, setIsDragging] = useState(false)
@@ -23,6 +24,13 @@ export const DragDrop = ({ desktopRef, innerComponent, defaultPosition, active, 
 
 
     const drag = (e: object) => {
+        if (dragAreaFromTop) {
+            const mouseToDragelemnt = e.clientY - e.target.getBoundingClientRect().top
+            if (mouseToDragelemnt > dragAreaFromTop) {
+                return
+            }
+        }
+
         onMouseDownHandleActiveWindow();
         const currentDesktopBounding = desktopRef.current.getBoundingClientRect()
         setDesktopBounding(currentDesktopBounding)

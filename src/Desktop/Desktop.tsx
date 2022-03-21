@@ -25,6 +25,7 @@ export const Desktop = () => {
                     innerComponent={<WindowFrame title="Note - Todos1" content="Lorem Ipsum dolor Santis est" active={activeWindow === 1} />}
                     active={activeWindow === 1}
                     onMouseDownHandleActiveWindow={() => handleActiveWindow(1)}
+                    dragAreaFromTop={20}
                 />
                 <DragDrop 
                     defaultPosition={{x:82, y: 62}} 
@@ -32,6 +33,7 @@ export const Desktop = () => {
                     innerComponent={<WindowFrame title="Note - Todos2" content="Lorem Ipsum dolor Santis est" active={activeWindow === 2} />}
                     active={activeWindow === 2}
                     onMouseDownHandleActiveWindow={() => handleActiveWindow(2)}
+                    dragAreaFromTop={20}
                 />
                 <DragDrop 
                     defaultPosition={{x:102, y: 82}} 
@@ -39,6 +41,7 @@ export const Desktop = () => {
                     innerComponent={<WindowFrame title="Note - Todos3" content="Lorem Ipsum dolor Santis est" active={activeWindow === 3} />}
                     active={activeWindow === 3}
                     onMouseDownHandleActiveWindow={() => handleActiveWindow(3)}
+                    dragAreaFromTop={20}
                 />
             </main>
         </div>
