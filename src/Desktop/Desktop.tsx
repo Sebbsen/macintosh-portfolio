@@ -29,7 +29,7 @@ export const Desktop = () => {
                     dragAreaFromTop={20}
                 />
                 <DragDrop 
-                    defaultPosition={{x:89, y: 90}} 
+                    defaultPosition={{x:95, y: 95}} 
                     desktopRef={desktopMainRef} 
                     innerComponent={<WindowFrame title="About Me" content={<AboutMeContent />} active={activeWindow === 2} width="375px" />}
                     active={activeWindow === 2}
