@@ -16,10 +16,6 @@ body {
   color: $text-color;
   font-family: $font-text;
   font-size: 0.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
   font-size: 0.875rem;
 }
 
@@ -32,4 +28,35 @@ body {
   font-size: 0.5rem;
   font-weight: normal;
   letter-spacing: 0.08rem;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 3028px;
+}
+
+.screen-overlay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 541px;
+  transform: translate(-50%, -50%);
+  margin-top: -177px;
+  margin-left: -5px;
+  z-index: 99999;
+  pointer-events: none;
+
+  &--refl {
+    mix-blend-mode: screen;
+  }
+  
+  &--shadow {
+    mix-blend-mode: multiply;
+  }
+  
 }

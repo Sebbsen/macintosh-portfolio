@@ -3,8 +3,10 @@
 .desktop {
     display: flex;
     flex-direction: column;
-    width: 512px;
-    height: 344px;
+    width: 498px;
+    height: 364px;
+    margin-top: -349px;
+    margin-left: -5px;
     background-color: $desktop-bg-color;
     border-radius: 8px;
     border: 1px solid $border-color;
@@ -14,5 +16,6 @@
         width: 100%;
         flex: 1 1 100%;
         position: relative;
+        overflow: hidden;
     }
 }
