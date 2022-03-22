@@ -5,12 +5,12 @@ type DragDropProps = {
     innerComponent: object,
     desktopRef: object,
     defaultPosition: {x: number,y: number},
-    active: boolean,
+    zIndex: number,
     onMouseDownHandleActiveWindow:()=>void,
     dragAreaFromTop: number | boolean
 }
 
-export const DragDrop = ({ desktopRef, innerComponent, defaultPosition, active, onMouseDownHandleActiveWindow, dragAreaFromTop }: DragDropProps) => {
+export const DragDrop = ({ desktopRef, innerComponent, defaultPosition, zIndex, onMouseDownHandleActiveWindow, dragAreaFromTop }: DragDropProps) => {
 
     const [position, setPosition] = useState({x: defaultPosition.x, y: defaultPosition.y})
     const [isDragging, setIsDragging] = useState(false)
@@ -19,7 +19,8 @@ export const DragDrop = ({ desktopRef, innerComponent, defaultPosition, active, 
 
     const style = {
         width: '184px',
-        transform: `translate(${position.x}px, ${position.y}px)`
+        transform: `translate(${position.x}px, ${position.y}px)`,
+        zIndex: zIndex,
     };
 
 
@@ -81,7 +82,7 @@ export const DragDrop = ({ desktopRef, innerComponent, defaultPosition, active, 
 
 
     return (
-        <div className={"drag-drop " + (active ? 'drag-drop--active' : '')} style={style} onMouseDown={ drag } onMouseUp={ drop }>
+        <div className="drag-drop" style={style} onMouseDown={ drag } onMouseUp={ drop }>
             {innerComponent}
         </div>
     )
