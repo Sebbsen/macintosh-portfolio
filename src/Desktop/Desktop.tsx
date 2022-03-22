@@ -33,13 +33,9 @@ export const Desktop = () => {
 
     const handleActiveWindow = (id: number) => {
         const windowArray = [...windowsState];
-        // windowArray.map(singleWindow => {
-        //     return singleWindow.zIndex !== 0 ? singleWindow.zIndex - 1 : 0
-        // });
         const reformattedArray = windowsState.map(singleWindow => {
             let newZIndex;
-            
-            //debugger
+
             if (singleWindow.id === id) {
                 newZIndex = windowsState.length;  
             } else {
