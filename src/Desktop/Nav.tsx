@@ -68,6 +68,14 @@ export const Nav = ({ currentWindow }: NavProps) => {
                         {icon: undefined, text: 'Maximize', active: true},
                     ]}
                 />
+                <NavDropdownItem 
+                    title="Portfolio" 
+                    list={[
+                        {icon: undefined, text: 'Alcina', active: true},
+                        {icon: undefined, text: 'Bette', active: true},
+                        {icon: undefined, text: 'Audi BKK', active: true},
+                    ]}
+                />
             </div>
             <div className="nav__section nav__section--right">
                 <button className="nav__item nav__item--icon button">
