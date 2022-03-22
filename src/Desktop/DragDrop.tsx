@@ -25,14 +25,15 @@ export const DragDrop = ({ desktopRef, innerComponent, defaultPosition, zIndex, 
 
 
     const drag = (e: object) => {
+        onMouseDownHandleActiveWindow();
+        
         if (dragAreaFromTop) {
             const mouseToDragelemnt = e.clientY - e.target.getBoundingClientRect().top
             if (mouseToDragelemnt > dragAreaFromTop) {
                 return
             }
         }
-
-        onMouseDownHandleActiveWindow();
+        
         const currentDesktopBounding = desktopRef.current.getBoundingClientRect()
         setDesktopBounding(currentDesktopBounding)
         
