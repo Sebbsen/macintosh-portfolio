@@ -39,8 +39,12 @@ export const AboutMeContent = () => {
                 <ul className="about-me-content__list">
                     <li><img src={helpIcon} alt="" /> HTML</li>
                     <li><img src={systemIcon} alt="" /> CSS</li>
+                    <li><img src={systemIcon} alt="" /> SASS</li>
+                    <li><img src={systemIcon} alt="" /> TAILWIND</li>
                     <li><img src={helpIcon} alt="" /> JS</li>
-                    <li><img src={systemIcon} alt="" /> TYPESCRIPT</li>
+                    <li><img src={helpIcon} alt="" /> VUE</li>
+                    <li><img src={systemIcon} alt="" /> WORDPRESS</li>
+                    <li><img src={systemIcon} alt="" /> PIMCORE</li>
                 </ul>
             </div>
         </div>
