@@ -16,12 +16,16 @@ export const Desktop = () => {
             id: 0,
             title:'Note - Todos 1',
             content: 'Lorem Ipsum dolor Santis est',
-            defaultPosition: {x:31, y: 24}
+            defaultPosition: {x:31, y: 24},
+            width: '190px',
+            zIndex: 2, 
         },
         {
             type: 'about',
             id: 1,
-            defaultPosition: {x:95, y: 95}
+            defaultPosition: {x:95, y: 95},
+            width: '375px',
+            zIndex: 1, 
         }
     ]
 
@@ -29,8 +33,23 @@ export const Desktop = () => {
 
     const handleActiveWindow = (id: number) => {
         const windowArray = [...windowsState];
-        const first = windowArray.filter(window => window.id === id)[0];
-        windowArray.sort(function(x,y){ return x == first ? -1 : y == first ? 1 : 0; });
+        // windowArray.map(singleWindow => {
+        //     return singleWindow.zIndex !== 0 ? singleWindow.zIndex - 1 : 0
+        // });
+        const reformattedArray = windowsState.map(singleWindow => {
+            let newZIndex;
+            
+            //debugger
+            if (singleWindow.id === id) {
+                newZIndex = windowsState.length;  
+            } else {
+                newZIndex = singleWindow.zIndex !== 1 ? singleWindow.zIndex - 1 : 1;
+            }
+
+            singleWindow.zIndex = newZIndex;
+
+            return singleWindow;
+        });
         setWindowsState(windowArray);
     }
 
@@ -40,22 +59,30 @@ export const Desktop = () => {
                 <Nav currentWindow="Note" />
             </header>
             <main ref={desktopMainRef} className="desktop__main">
-                <DragDrop
-                    defaultPosition={{x:31, y: 24}} 
-                    desktopRef={desktopMainRef} 
-                    innerComponent={<WindowFrame title="Note - Todos1" content="Lorem Ipsum dolor Santis est" active={windowsState.findIndex(window => window.id === 0) === 0} width="189px" />}
-                    zIndex={windowsState.length - windowsState.findIndex(window => window.id === 0)}
-                    onMouseDownHandleActiveWindow={() => handleActiveWindow(0)}
-                    dragAreaFromTop={20}
-                />
-                <DragDrop 
-                    defaultPosition={{x:95, y: 95}} 
-                    desktopRef={desktopMainRef} 
-                    innerComponent={<WindowFrame title="About Me" content={<AboutMeContent />} active={windowsState.findIndex(window => window.id === 1) === 0} width="375px" />}
-                    zIndex={windowsState.length - windowsState.findIndex(window => window.id === 1)}
-                    onMouseDownHandleActiveWindow={() => handleActiveWindow(1)}
-                    dragAreaFromTop={20}
-                />
+
+                {windowsState.map((window, i) => {
+                    let {type, id, title, content, defaultPosition, width, zIndex} = window;
+                    let windowElement;
+                    if (window.type === 'note') {
+                        windowElement = 'Lorem Ipsum' //needs own NoteContent component
+                    } else if (window.type === 'about') {
+                        windowElement = <AboutMeContent />
+                    } else {
+                        return
+                    }
+
+                    return (
+                        <DragDrop 
+                            defaultPosition={{x:defaultPosition.x, y: defaultPosition.y}} 
+                            desktopRef={desktopMainRef} 
+                            innerComponent={<WindowFrame title={title} content={windowElement} active={zIndex === windowsState.length} width={width} />}
+                            zIndex={zIndex}
+                            onMouseDownHandleActiveWindow={() => handleActiveWindow(id)}
+                            dragAreaFromTop={20}
+                        />
+                    )
+                }
+                )}
             </main>
         </div>
     )
