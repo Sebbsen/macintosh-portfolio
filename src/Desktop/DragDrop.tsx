@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import './DragDrop.scss'
 
 type DragDropProps = {
@@ -12,14 +12,13 @@ type DragDropProps = {
 }
 
 export const DragDrop = ({ desktopRef, innerComponent, defaultPosition, zIndex, onMouseDownHandleActiveWindow, dragAreaFromTop, isHidden }: DragDropProps) => {
-
+    const dragDropRef = useRef<HTMLDivElement>(null);
     const [position, setPosition] = useState({x: defaultPosition.x, y: defaultPosition.y})
     const [isDragging, setIsDragging] = useState(false)
     const [desktopBounding, setDesktopBounding] = useState({left: 0, top: 0})
     const [mouseOld, setMouseOld] = useState({x: 0, y: 0})
 
     const style = {
-        width: '184px',
         transform: `translate(${position.x}px, ${position.y}px)`,
         zIndex: zIndex,
         display: isHidden ? 'none': 'block'
@@ -29,8 +28,9 @@ export const DragDrop = ({ desktopRef, innerComponent, defaultPosition, zIndex, 
     const drag = (e: any) => {
         onMouseDownHandleActiveWindow();
         
-        if (dragAreaFromTop) {
-            const mouseToDragelemnt = e.clientY - e.target.getBoundingClientRect().top
+        if (dragAreaFromTop && dragDropRef.current) {
+            const mouseToDragelemnt = e.clientY - dragDropRef.current.getBoundingClientRect().top
+
             if (mouseToDragelemnt > dragAreaFromTop) {
                 return
             }
@@ -85,7 +85,7 @@ export const DragDrop = ({ desktopRef, innerComponent, defaultPosition, zIndex, 
 
 
     return (
-        <div className="drag-drop" style={style} onMouseDown={ drag } onMouseUp={ drop }>
+        <div ref={dragDropRef} className="drag-drop" style={style} onMouseDown={ drag } onMouseUp={ drop }>
             {innerComponent}
         </div>
     )
