@@ -23,6 +23,7 @@ export const Desktop = () => {
         {
             type: 'about',
             id: 1,
+            title:'About Me',
             defaultPosition: {x:95, y: 95},
             width: '375px',
             zIndex: 1, 
