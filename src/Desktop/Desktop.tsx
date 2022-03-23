@@ -1,97 +1,16 @@
 import { useRef, useState } from "react";
-import { Nav } from "./Nav"
 import './Desktop.scss'
+
+import { useDesktopContext } from "../DesktopContext";
+import { Nav } from "./Nav"
 import { WindowFrame } from "./Window/WindowFrame"
 import { DragDrop } from "./DragDrop"
 import { AboutMeContent } from "./AboutMeContent";
 
 export const Desktop = () => {
     const desktopMainRef = useRef(null);
-
-    const defaultWindows = [
-        {
-            type: 'note',
-            id: 0,
-            title:'Note - Todos 1',
-            content: 'Lorem Ipsum dolor Santis est',
-            defaultPosition: {x:31, y: 24},
-            width: '190px',
-            zIndex: 4,
-            isHidden: false,
-        },
-        {
-            type: 'note',
-            id: 1,
-            title:'Note - Todos 2',
-            content: 'Lorem Ipsum dolor Santis est',
-            defaultPosition: {x:51, y: 44},
-            width: '190px',
-            zIndex: 3,
-            isHidden: false,
-        },
-        {
-            type: 'note',
-            id: 2,
-            title:'Note - Todos 3',
-            content: 'Lorem Ipsum dolor Santis est',
-            defaultPosition: {x:71, y: 64},
-            width: '190px',
-            zIndex: 2,
-            isHidden: false,
-        },
-        {
-            type: 'about',
-            id: 3,
-            title:'About Me',
-            defaultPosition: {x:95, y: 95},
-            width: '375px',
-            zIndex: 1,
-            isHidden: false,
-        }
-    ]
-
-    const [windowsState, setWindowsState] = useState(defaultWindows)
-
-    const handleActiveWindow = (id: number) => {
-        let windowArray = [...windowsState];
-        let clickedWindowZIndex = windowArray[windowArray.findIndex((singleWindow => singleWindow.id == id))].zIndex;
-        windowArray = windowArray.map(singleWindow => {
-            let newZIndex;
-
-            if (singleWindow.id === id) {
-                newZIndex = windowsState.length;  
-            } else if ( singleWindow.zIndex > clickedWindowZIndex) {
-                newZIndex = singleWindow.zIndex !== 1 ? singleWindow.zIndex - 1 : 1;
-            } else {
-                newZIndex = singleWindow.zIndex
-            }
-
-            singleWindow.zIndex = newZIndex;
-
-            return singleWindow;
-        });
-        setWindowsState(windowArray);
-    }
-
-    const handleCloseWindow = (id:number) => {
-        let windowArray = [...windowsState];
-        windowArray = windowArray.map(singleWindow => {
-            let newZIndex;
-
-            if (singleWindow.id === id) {
-                newZIndex = 1; 
-                singleWindow.isHidden = true; 
-            } else {
-                newZIndex = singleWindow.zIndex + 1;
-            }
-
-            singleWindow.zIndex = newZIndex;
-
-            return singleWindow;
-        });
-        
-        setWindowsState(windowArray);
-    }
+    // @ts-ignore: Type '{}' must have a '[Symbol.iterator]()' method that returns an iterator
+    const [windowsState, handleActiveWindow, handleCloseWindow] = useDesktopContext();
 
     return (
         <div className="desktop">
@@ -100,12 +19,12 @@ export const Desktop = () => {
             </header>
             <main ref={desktopMainRef} className="desktop__main">
 
-                {windowsState.map((window, i) => {
-                    const {type, id, title, content, defaultPosition, width, zIndex, isHidden} = window;
+                {windowsState.map((singleWindow:any) => {
+                    const {type, id, title, content, defaultPosition, width, zIndex, isHidden} = singleWindow;
                     let windowElement;
-                    if (window.type === 'note') {
+                    if (type === 'note') {
                         windowElement = 'Lorem Ipsum' //needs own NoteContent component
-                    } else if (window.type === 'about') {
+                    } else if (type === 'about') {
                         windowElement = <AboutMeContent />
                     } else {
                         return
