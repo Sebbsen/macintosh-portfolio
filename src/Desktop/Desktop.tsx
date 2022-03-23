@@ -75,7 +75,21 @@ export const Desktop = () => {
 
     const handleCloseWindow = (id:number) => {
         let windowArray = [...windowsState];
-        windowArray[windowArray.findIndex((singleWindow => singleWindow.id == id))].isHidden = true;
+        windowArray = windowArray.map(singleWindow => {
+            let newZIndex;
+
+            if (singleWindow.id === id) {
+                newZIndex = 1; 
+                singleWindow.isHidden = true; 
+            } else {
+                newZIndex = singleWindow.zIndex + 1;
+            }
+
+            singleWindow.zIndex = newZIndex;
+
+            return singleWindow;
+        });
+        
         setWindowsState(windowArray);
     }
 
