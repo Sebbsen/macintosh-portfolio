@@ -33,8 +33,8 @@ export const Desktop = () => {
     const [windowsState, setWindowsState] = useState(defaultWindows)
 
     const handleActiveWindow = (id: number) => {
-        const windowArray = [...windowsState];
-        const reformattedArray = windowsState.map(singleWindow => {
+        let windowArray = [...windowsState];
+        windowArray = windowArray.map(singleWindow => {
             let newZIndex;
 
             if (singleWindow.id === id) {
