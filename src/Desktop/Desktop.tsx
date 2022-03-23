@@ -50,6 +50,12 @@ export const Desktop = () => {
         setWindowsState(windowArray);
     }
 
+    const handleCloseWindow = (id:number) => {
+        let windowArray = [...windowsState];
+        windowArray[windowArray.findIndex((singleWindow => singleWindow.id == id))].isHidden = true;
+        setWindowsState(windowArray);
+    }
+
     return (
         <div className="desktop">
             <header className="desktop__header">
@@ -58,7 +64,7 @@ export const Desktop = () => {
             <main ref={desktopMainRef} className="desktop__main">
 
                 {windowsState.map((window, i) => {
-                    let {type, id, title, content, defaultPosition, width, zIndex} = window;
+                    const {type, id, title, content, defaultPosition, width, zIndex, isHidden} = window;
                     let windowElement;
                     if (window.type === 'note') {
                         windowElement = 'Lorem Ipsum' //needs own NoteContent component
@@ -72,10 +78,11 @@ export const Desktop = () => {
                         <DragDrop 
                             defaultPosition={{x:defaultPosition.x, y: defaultPosition.y}} 
                             desktopRef={desktopMainRef} 
-                            innerComponent={<WindowFrame title={title} content={windowElement} active={zIndex === windowsState.length} width={width} />}
+                            innerComponent={<WindowFrame title={title} content={windowElement} active={zIndex === windowsState.length} width={width} onHandleCloseWindow={() => handleCloseWindow(id)} />}
                             zIndex={zIndex}
                             onMouseDownHandleActiveWindow={() => handleActiveWindow(id)}
                             dragAreaFromTop={20}
+                            isHidden={isHidden}
                         />
                     )
                 }

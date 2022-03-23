@@ -7,10 +7,11 @@ type DragDropProps = {
     defaultPosition: {x: number,y: number},
     zIndex: number,
     onMouseDownHandleActiveWindow:()=>void,
-    dragAreaFromTop: number | boolean
+    dragAreaFromTop: number | boolean,
+    isHidden: boolean,
 }
 
-export const DragDrop = ({ desktopRef, innerComponent, defaultPosition, zIndex, onMouseDownHandleActiveWindow, dragAreaFromTop }: DragDropProps) => {
+export const DragDrop = ({ desktopRef, innerComponent, defaultPosition, zIndex, onMouseDownHandleActiveWindow, dragAreaFromTop, isHidden }: DragDropProps) => {
 
     const [position, setPosition] = useState({x: defaultPosition.x, y: defaultPosition.y})
     const [isDragging, setIsDragging] = useState(false)
@@ -21,6 +22,7 @@ export const DragDrop = ({ desktopRef, innerComponent, defaultPosition, zIndex, 
         width: '184px',
         transform: `translate(${position.x}px, ${position.y}px)`,
         zIndex: zIndex,
+        display: isHidden ? 'none': 'block'
     };
 
 

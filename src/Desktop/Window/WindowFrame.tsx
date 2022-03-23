@@ -5,10 +5,11 @@ type WindowFrameProps = {
     active: boolean,
     title: string,
     content: string | object,
-    width: string
+    width: string,
+    onHandleCloseWindow: ()=>void,
 }
 
-export const WindowFrame = ({ active, title, content, width }: WindowFrameProps) => {
+export const WindowFrame = ({ active, title, content, width, onHandleCloseWindow }: WindowFrameProps) => {
 
     const [varName, setVarName] = useState('defaultValue');
     
@@ -25,7 +26,7 @@ export const WindowFrame = ({ active, title, content, width }: WindowFrameProps)
     return (
         <section className={"window-frame " + (active ? '' : 'window-frame--inactive')} style={style}>
             <header className="window-frame__header">
-                <button className="button window-frame__btn"></button>
+                <button className="button window-frame__btn" onClick={onHandleCloseWindow}></button>
                 <h2 className="headline window-frame__title">{title}</h2>
                 <button className="button window-frame__btn window-frame__btn--size"></button>
             </header>
