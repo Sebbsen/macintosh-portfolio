@@ -16,7 +16,7 @@ export const NoteContent = ({ defaultText }: NoteContentProps) => {
 
 
     return (
-        // @ts-ignore: Property 'maxlength' does not exist on type 
-        <textarea className="note-content" maxlength="133">{defaultText}</textarea>
+
+        <textarea className="note-content" maxLength={133}>{defaultText}</textarea>
     )
 }
