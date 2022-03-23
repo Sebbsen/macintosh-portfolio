@@ -1,6 +1,8 @@
 @import "/src/scss/Vars.scss";
 
 .window-frame {
+    display: flex;
+    flex-direction: column;
     min-height: 165px;
     background-color: $window-bg-color;
     border: 1px solid $border-color;
@@ -71,6 +73,8 @@
     }
 
     &__main {
+        display: flex;
+        flex: 1;
         padding: .5rem 1rem;
     }
 }

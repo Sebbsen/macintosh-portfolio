@@ -6,6 +6,7 @@ import { Nav } from "./Nav"
 import { WindowFrame } from "./Window/WindowFrame"
 import { DragDrop } from "./DragDrop"
 import { AboutMeContent } from "./AboutMeContent";
+import { NoteContent } from "./NoteContet";
 
 export const Desktop = () => {
     const desktopMainRef = useRef(null);
@@ -23,7 +24,7 @@ export const Desktop = () => {
                     const {type, id, title, content, defaultPosition, width, zIndex, isHidden} = singleWindow;
                     let windowElement;
                     if (type === 'note') {
-                        windowElement = 'Lorem Ipsum' //needs own NoteContent component
+                        windowElement = <NoteContent defaultText={content} />
                     } else if (type === 'about') {
                         windowElement = <AboutMeContent />
                     } else {

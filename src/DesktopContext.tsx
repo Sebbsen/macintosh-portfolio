@@ -16,31 +16,11 @@ export const DesktopProvider = ({ childern }: DesktopContextProps) => {
         {
             type: 'note',
             id: 0,
-            title:'Note - Todos 1',
-            content: 'Lorem Ipsum dolor Santis est',
+            title:'Note - Todos',
+            content: '- A̶d̶d̶ ̶D̶r̶a̶g̶D̶r̶o̶p̶ \n- A̶d̶d̶ ̶N̶o̶t̶e̶ \n- A̶d̶d̶ ̶A̶b̶o̶u̶t̶ ̶M̶e̶ \n- Implement Game \n- Add 3D Model',
             defaultPosition: {x:31, y: 24},
             width: '190px',
-            zIndex: 4,
-            isHidden: false,
-        },
-        {
-            type: 'note',
-            id: 1,
-            title:'Note - Todos 2',
-            content: 'Lorem Ipsum dolor Santis est',
-            defaultPosition: {x:51, y: 44},
-            width: '190px',
-            zIndex: 3,
-            isHidden: false,
-        },
-        {
-            type: 'note',
-            id: 2,
-            title:'Note - Todos 3',
-            content: 'Lorem Ipsum dolor Santis est',
-            defaultPosition: {x:71, y: 64},
-            width: '190px',
-            zIndex: 2,
+            zIndex: 1,
             isHidden: false,
         },
         {
@@ -49,7 +29,7 @@ export const DesktopProvider = ({ childern }: DesktopContextProps) => {
             title:'About Me',
             defaultPosition: {x:95, y: 95},
             width: '375px',
-            zIndex: 1,
+            zIndex: 2,
             isHidden: false,
         }
     ]
