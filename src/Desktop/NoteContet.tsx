@@ -7,7 +7,7 @@ type NoteContentProps = {
 
 export const NoteContent = ({ defaultText }: NoteContentProps) => {
 
-    const [varName, setVarName] = useState('defaultValue');
+    const [textareaValue, setTextareaValue] = useState(defaultText);
     
     
     useEffect(() => {
@@ -17,6 +17,6 @@ export const NoteContent = ({ defaultText }: NoteContentProps) => {
 
     return (
 
-        <textarea className="note-content" maxLength={133}>{defaultText}</textarea>
+        <textarea className="note-content" maxLength={133} defaultValue={textareaValue}></textarea>
     )
 }
