@@ -17,7 +17,7 @@ export const DesktopProvider = ({ childern }: DesktopContextProps) => {
             type: 'note',
             id: 0,
             title:'Note - Todos',
-            content: '- A̶d̶d̶ ̶D̶r̶a̶g̶D̶r̶o̶p̶ \n- A̶d̶d̶ ̶N̶o̶t̶e̶ \n- A̶d̶d̶ ̶A̶b̶o̶u̶t̶ ̶M̶e̶ \n- Implement Game \n- Add 3D Model',
+            content: '- A̶d̶d̶ ̶D̶r̶a̶g̶D̶r̶o̶p̶ \n- A̶d̶d̶ ̶N̶o̶t̶e̶ \n- A̶d̶d̶ ̶A̶b̶o̶u̶t̶ ̶M̶e̶ \n- Implement game \n- Add 3D model \n- Safe state local',
             defaultPosition: {x:31, y: 24},
             width: '190px',
             zIndex: 1,
