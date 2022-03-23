@@ -8,8 +8,6 @@ import { AboutMeContent } from "./AboutMeContent";
 export const Desktop = () => {
     const desktopMainRef = useRef(null);
 
-    const [windowsStateactiveWindow, setActiveWindow] = useState(2)
-
     const defaultWindows = [
         {
             type: 'note',
