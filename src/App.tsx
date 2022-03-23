@@ -3,6 +3,7 @@ import './App.scss'
 import bgMac from './images/bg-mac.webp';
 import bgMacShadow from './images/shadow.webp';
 import bgMacRefl from './images/refl.webp';
+import { DesktopProvider } from './DesktopContext'
 import { Desktop } from './Desktop/Desktop'
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
     <div className="app" style={style}>
       <img className="screen-overlay screen-overlay--refl" src={bgMacRefl} alt="" />
       <img className="screen-overlay screen-overlay--shadow" src={bgMacShadow} alt="" />
-      <Desktop />
+      <DesktopProvider childern={<Desktop />} />
     </div>
   )
 }
