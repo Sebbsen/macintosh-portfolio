@@ -3,7 +3,7 @@ import './DragDrop.scss'
 
 type DragDropProps = {
     innerComponent: object,
-    desktopRef: object,
+    desktopRef: any,
     defaultPosition: {x: number,y: number},
     zIndex: number,
     onMouseDownHandleActiveWindow:()=>void,
@@ -15,7 +15,7 @@ export const DragDrop = ({ desktopRef, innerComponent, defaultPosition, zIndex, 
 
     const [position, setPosition] = useState({x: defaultPosition.x, y: defaultPosition.y})
     const [isDragging, setIsDragging] = useState(false)
-    const [desktopBounding, setDesktopBounding] = useState({})
+    const [desktopBounding, setDesktopBounding] = useState({left: 0, top: 0})
     const [mouseOld, setMouseOld] = useState({x: 0, y: 0})
 
     const style = {
@@ -26,7 +26,7 @@ export const DragDrop = ({ desktopRef, innerComponent, defaultPosition, zIndex, 
     };
 
 
-    const drag = (e: object) => {
+    const drag = (e: any) => {
         onMouseDownHandleActiveWindow();
         
         if (dragAreaFromTop) {
@@ -50,7 +50,7 @@ export const DragDrop = ({ desktopRef, innerComponent, defaultPosition, zIndex, 
         setIsDragging(false)       
     }
 
-    const handleDrag = (e: object) => {
+    const handleDrag = (e: any) => {
         const mouseNewX = e.clientX - desktopBounding.left
         const mouseNewY = e.clientY - desktopBounding.top
 
