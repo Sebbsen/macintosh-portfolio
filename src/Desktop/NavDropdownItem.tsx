@@ -5,7 +5,7 @@ import './NavDropdownItem.scss'
 
 type NavDropdownItemProps = {
     title: string,
-    list: {icon: {normal: string, white: string, } | undefined, text: string, active: boolean}[]
+    list: {icon: {normal: string, white: string, } | undefined, text: string, action: ()=>void, active: boolean}[],
 }
 
 export const NavDropdownItem = ({ title, list }: NavDropdownItemProps) => {
@@ -37,7 +37,7 @@ export const NavDropdownItem = ({ title, list }: NavDropdownItemProps) => {
                         return (<hr key={i} />)
                     } 
                     return (
-                            <button key={i} className={"button nav-dropdown-item__dropdown-btn " + (!item.active ? 'nav-dropdown-item__dropdown-btn--inactive' : '')}>
+                            <button key={i} className={"button nav-dropdown-item__dropdown-btn " + (!item.active ? 'nav-dropdown-item__dropdown-btn--inactive' : '')} onClick={item.action}>
                                 {item.icon &&
                                     <span>
                                         <img src={item.icon?.normal} className="icon-inactive" alt="" />

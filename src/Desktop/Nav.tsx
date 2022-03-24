@@ -34,7 +34,6 @@ export const Nav = ({ currentWindow }: NavProps) => {
     return (
         <nav className="nav headline">
             <div className="nav__section">
-                <div onClick={()=>{addWindow('note')}}>Add Note Dummy</div>
                 <NavDropdownItem 
                     title="Logo" 
                     list={[
@@ -48,7 +47,7 @@ export const Nav = ({ currentWindow }: NavProps) => {
                 <NavDropdownItem 
                     title="File" 
                     list={[
-                        {icon: undefined, text: 'Add Note', active: true},
+                        {icon: undefined, text: 'Add Note', action: () => addWindow('note'), active: true},
                         {icon: undefined, text: 'Delete Note', active: true},
                         {icon: undefined, text: 'Copy Note', active: false},
                         {icon: undefined, text: '---', active: true},
