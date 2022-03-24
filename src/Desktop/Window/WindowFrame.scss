@@ -69,6 +69,7 @@
     &--inactive {
         .window-frame__btn, .window-frame__header::before {
             opacity: 0;
+            pointer-events: none;
         }
     }
 
