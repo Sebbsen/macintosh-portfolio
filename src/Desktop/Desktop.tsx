@@ -11,7 +11,7 @@ import { NoteContent } from "./NoteContet";
 export const Desktop = () => {
     const desktopMainRef = useRef(null);
     // @ts-ignore: Type '{}' must have a '[Symbol.iterator]()' method that returns an iterator
-    const [windowsState, handleActiveWindow, handleCloseWindow] = useDesktopContext();
+    const {windowsState, handleActiveWindow, handleCloseWindow} = useDesktopContext();
 
     return (
         <div className="desktop">

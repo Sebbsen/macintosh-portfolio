@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import './Nav.scss'
 
+import { useDesktopContext } from "../DesktopContext";
 import helpIcon from '../icons/help-icon.svg';
 import helpWhiteIcon from '../icons/help-white-icon.svg';
 import systemIcon from '../icons/system-icon.svg';
@@ -18,6 +19,8 @@ type NavProps = {
 }
 
 export const Nav = ({ currentWindow }: NavProps) => {
+    // @ts-ignore: Type '{}' must have a '[Symbol.iterator]()' method that returns an iterator
+    const {windowsState, addWindow} = useDesktopContext();
     
     const windowChanged = () => {
         console.log(currentWindow);
@@ -31,6 +34,7 @@ export const Nav = ({ currentWindow }: NavProps) => {
     return (
         <nav className="nav headline">
             <div className="nav__section">
+                <div onClick={()=>{addWindow('note')}}>Add Note Dummy</div>
                 <NavDropdownItem 
                     title="Logo" 
                     list={[
