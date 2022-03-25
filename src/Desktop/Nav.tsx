@@ -20,7 +20,7 @@ type NavProps = {
 
 export const Nav = ({ currentWindow }: NavProps) => {
     // @ts-ignore: Type '{}' must have a '[Symbol.iterator]()' method that returns an iterator
-    const {windowsState, addWindow} = useDesktopContext();
+    const {windowsState, addWindow, removeWindow} = useDesktopContext();
     
     const windowChanged = () => {
         console.log(currentWindow);
@@ -30,6 +30,7 @@ export const Nav = ({ currentWindow }: NavProps) => {
         windowChanged();
     }, [currentWindow])
 
+    const activeWindowId = windowsState.filter((window: any) => window.zIndex === windowsState.length)[0].id
 
     return (
         <nav className="nav headline">
@@ -48,7 +49,7 @@ export const Nav = ({ currentWindow }: NavProps) => {
                     title="File" 
                     list={[
                         {icon: undefined, text: 'Add Note', action: () => addWindow('note'), active: true},
-                        {icon: undefined, text: 'Delete Note', active: true},
+                        {icon: undefined, text: 'Delete Note', action: () => removeWindow(activeWindowId), active: true},
                         {icon: undefined, text: 'Copy Note', active: false},
                         {icon: undefined, text: '---', active: true},
                         {icon: undefined, text: 'Print', active: false},
