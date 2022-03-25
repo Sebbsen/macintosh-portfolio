@@ -60,19 +60,14 @@ export const DesktopProvider = ({ childern }: DesktopContextProps) => {
 
     const handleCloseWindow = (id:number) => {
         let windowArray = [...windowsState];
-        windowArray = windowArray.map(singleWindow => {
-            let newZIndex;
-
-            if (singleWindow.id === id) {
-                newZIndex = 1; 
-                singleWindow.isHidden = true; 
-            } else {
-                newZIndex = singleWindow.zIndex + 1;
+        let currentWindowZIndex = windowArray[windowArray.findIndex((singleWindow => singleWindow.id == id))].zIndex;
+        windowArray = windowArray.filter(e=>e.id != id).map(singleWindow => {
+            if ( singleWindow.zIndex > currentWindowZIndex) {
+                singleWindow.zIndex --;
+                return singleWindow
             }
 
-            singleWindow.zIndex = newZIndex;
-
-            return singleWindow;
+            return singleWindow
         });
         
         setWindowsState(windowArray);
