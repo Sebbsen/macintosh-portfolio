@@ -69,6 +69,29 @@ body {
   
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+  border: 1px solid $border-color;
+  border-top: none;
+  border-bottom: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $border-color; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $border-color; 
+}
+
 hr {
   width: 100%;
   margin: 0;
