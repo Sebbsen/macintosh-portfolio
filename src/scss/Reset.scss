@@ -50,3 +50,7 @@ textarea {
     font-family: inherit;
 }
 
+[contenteditable] {
+    outline: none;
+}
+

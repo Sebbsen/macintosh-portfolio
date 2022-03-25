@@ -18,9 +18,10 @@ export const DesktopProvider = ({ childern }: DesktopContextProps) => {
             type: 'note',
             id: 100001,
             title:'Note - Todos',
-            content: '- A̶d̶d̶ ̶D̶r̶a̶g̶D̶r̶o̶p̶ \n- A̶d̶d̶ ̶N̶o̶t̶e̶ \n- A̶d̶d̶ ̶A̶b̶o̶u̶t̶ ̶M̶e̶ \n- Implement game \n- Add 3D model \n- Safe state local',
+            content: '- <s>Add DragDrop</s> <br />- <s>Add Note</s> <br />- <s>Add About Me</s> <br />- Implement game <br />- Add 3D model <br />- Safe state local',
             defaultPosition: {x:31, y: 24},
             width: '190px',
+            height: '145px',
             zIndex: 1,
             isHidden: false,
         },
@@ -103,6 +104,7 @@ export const DesktopProvider = ({ childern }: DesktopContextProps) => {
                 title:'Note - MyNote',
                 content: '',
                 width: '190px',
+                height: '145px',
             }
         } else if(type === 'mobilenote') {
             specificWindow = {
@@ -111,6 +113,7 @@ export const DesktopProvider = ({ childern }: DesktopContextProps) => {
                 title:'Use Desktop',
                 content: 'This page is optimised for the desktop. Feel free to try it out in Chrome or any other modern browser. Just please not in IE',
                 width: '190px',
+                height: '145px',
             }
         }
         setNewWindowPosition({x: newWindowPosition.x + 10, y: newWindowPosition.y + 10})

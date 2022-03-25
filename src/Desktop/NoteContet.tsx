@@ -16,7 +16,6 @@ export const NoteContent = ({ defaultText }: NoteContentProps) => {
 
 
     return (
-
-        <textarea className="note-content" maxLength={133} defaultValue={textareaValue} spellCheck="false"></textarea>
+        <div className="note-content" contentEditable="true" dangerouslySetInnerHTML={{__html: textareaValue}}></div>
     )
 }
