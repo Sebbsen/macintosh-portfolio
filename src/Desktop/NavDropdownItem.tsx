@@ -5,7 +5,7 @@ import './NavDropdownItem.scss'
 
 type NavDropdownItemProps = {
     title: string,
-    list: {icon: {normal: string, white: string, } | undefined, text: string, action: ()=>void, active: boolean}[],
+    list: {icon: {normal: string, white: string, } | undefined, text: string, action?: ()=>void, active: boolean}[],
 }
 
 export const NavDropdownItem = ({ title, list }: NavDropdownItemProps) => {
