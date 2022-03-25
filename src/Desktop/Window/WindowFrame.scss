@@ -7,6 +7,10 @@
     background-color: $window-bg-color;
     border: 1px solid $border-color;
     box-shadow: 1px 1px 0 0 $border-color;
+
+    @include mobile-screen {
+        max-width: 100%;
+    }
     
     &__header {
         display: flex;

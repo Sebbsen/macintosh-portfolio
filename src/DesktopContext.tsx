@@ -1,4 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
+import { mobileCheck } from "./utils";
 
 const DesktopContext = React.createContext({});
 
@@ -36,6 +37,12 @@ export const DesktopProvider = ({ childern }: DesktopContextProps) => {
 
     const [windowsState, setWindowsState] = useState(defaultWindows)
     const [newWindowPosition, setNewWindowPosition] = useState({x: 41,y: 34})
+
+    useEffect(() => {
+        if (mobileCheck()){
+            addWindow('mobilenote')
+        }
+    }, [])
 
     const handleActiveWindow = (id: number) => {
         let windowArray = [...windowsState];
@@ -95,6 +102,14 @@ export const DesktopProvider = ({ childern }: DesktopContextProps) => {
                 type: 'note',
                 title:'Note - MyNote',
                 content: '',
+                width: '190px',
+            }
+        } else if(type === 'mobilenote') {
+            specificWindow = {
+                type: 'note',
+                id: 999999,
+                title:'Use Desktop',
+                content: 'This page is optimised for the desktop. Feel free to try it out in Chrome or any other modern browser. Just please not in IE',
                 width: '190px',
             }
         }

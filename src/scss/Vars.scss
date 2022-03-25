@@ -10,3 +10,13 @@ $inverted-marker-color: white;
 
 $font-headline: 'PixChicago', sans-serif;
 $font-text: 'NeuePixelSans', sans-serif;
+
+
+// screens
+$mobile-width: 550px;
+
+@mixin mobile-screen {
+    @media (max-width: #{$mobile-width}) {
+      @content;
+    }
+  }
