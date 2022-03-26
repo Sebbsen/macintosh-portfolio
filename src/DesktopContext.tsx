@@ -126,8 +126,14 @@ export const DesktopProvider = ({ childern }: DesktopContextProps) => {
         setWindowsState(windowsState.filter(e=>e.id != id));
     }
 
+    const changeWindowValue = (id: number, key: any, value: string | number) => {
+        let windowArray = [...windowsState];
+        windowArray[windowArray.findIndex((singleWindow => singleWindow.id == id))][key] = value;
+        setWindowsState(windowArray)
+    }
+
     return (
-        <DesktopContext.Provider value={{windowsState, handleActiveWindow, handleCloseWindow, addWindow, removeWindow}}>
+        <DesktopContext.Provider value={{windowsState, handleActiveWindow, handleCloseWindow, addWindow, removeWindow, changeWindowValue}}>
             {childern}
         </DesktopContext.Provider>
     )

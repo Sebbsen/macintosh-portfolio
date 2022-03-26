@@ -25,7 +25,7 @@ export const Desktop = () => {
                     let windowElement;
                     let editable = false;
                     if (type === 'note') {
-                        windowElement = <NoteContent defaultText={content} />
+                        windowElement = <NoteContent defaultText={content} id={id} />
                         editable = true;
                     } else if (type === 'about') {
                         windowElement = <AboutMeContent />
@@ -37,7 +37,7 @@ export const Desktop = () => {
                         <DragDrop 
                             defaultPosition={{x:defaultPosition.x, y: defaultPosition.y}} 
                             desktopRef={desktopMainRef} 
-                            innerComponent={<WindowFrame title={title} content={windowElement} active={zIndex === windowsState.length} width={width} height={height} editable={editable} onHandleCloseWindow={() => handleCloseWindow(id)} />}
+                            innerComponent={<WindowFrame title={title} content={windowElement} active={zIndex === windowsState.length} width={width} height={height} editable={editable} id={id} onHandleCloseWindow={() => handleCloseWindow(id)} />}
                             zIndex={zIndex}
                             onMouseDownHandleActiveWindow={() => handleActiveWindow(id)}
                             dragAreaFromTop={20}
