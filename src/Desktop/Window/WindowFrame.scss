@@ -40,6 +40,10 @@
         background-color: white;
         padding: 0 0.5rem;
         margin: 0;
+        max-width: 130px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         
         &:not([contenteditable=true]) {
             pointer-events: none;
