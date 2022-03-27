@@ -20,7 +20,7 @@ type NavProps = {
 
 export const Nav = ({ currentWindow }: NavProps) => {
     // @ts-ignore: Type '{}' must have a '[Symbol.iterator]()' method that returns an iterator
-    const {windowsState, addWindow, openWindow, removeWindow} = useDesktopContext();
+    const {windowsState, addWindow, openWindow, removeWindow, resetDesktop} = useDesktopContext();
     
     const windowChanged = () => {
         console.log(currentWindow);
@@ -58,11 +58,8 @@ export const Nav = ({ currentWindow }: NavProps) => {
                 <NavDropdownItem 
                     title="Edit" 
                     list={[
-                        {icon: undefined, text: 'Add Note', active: true},
-                        {icon: undefined, text: 'Delete Note', active: true},
-                        {icon: undefined, text: 'Copy Note', active: false},
-                        {icon: undefined, text: '---', active: true},
-                        {icon: undefined, text: 'Print', active: false},
+                        {icon: undefined, text: 'Reset Desktop', action: () => resetDesktop('about'), active: true},
+                        {icon: undefined, text: 'Select All', active: false},
                     ]}
                 />
                 <NavDropdownItem 

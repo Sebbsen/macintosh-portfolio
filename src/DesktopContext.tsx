@@ -150,8 +150,14 @@ export const DesktopProvider = ({ childern }: DesktopContextProps) => {
         setWindowsState(windowArray)
     }
 
+    const resetDesktop = () => {
+        setWindowsState([])
+        setTimeout(()=>{setWindowsState(defaultWindows)}, 1)
+        
+    }
+
     return (
-        <DesktopContext.Provider value={{windowsState, handleActiveWindow, handleCloseWindow, addWindow, removeWindow, openWindow, changeWindowValue}}>
+        <DesktopContext.Provider value={{windowsState, handleActiveWindow, handleCloseWindow, addWindow, removeWindow, openWindow, changeWindowValue, resetDesktop}}>
             {childern}
         </DesktopContext.Provider>
     )
