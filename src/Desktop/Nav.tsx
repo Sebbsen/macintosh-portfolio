@@ -30,7 +30,7 @@ export const Nav = ({ currentWindow }: NavProps) => {
         windowChanged();
     }, [currentWindow])
 
-    const activeWindowId = windowsState.filter((window: any) => window.zIndex === windowsState.length)[0].id
+    const activeWindowId = windowsState.filter((window: any) => window.zIndex === windowsState.length)[0]?.id
 
     return (
         <nav className="nav headline">
