@@ -115,6 +115,12 @@ export const DesktopProvider = ({ childern }: DesktopContextProps) => {
                 width: '190px',
                 height: '145px',
             }
+        } else if(type === 'about') {
+            specificWindow = {
+                type: 'about',
+                title:'About Me',
+                width: '375px',
+            }
         }
         setNewWindowPosition({x: newWindowPosition.x + 10, y: newWindowPosition.y + 10})
         const newWindow = {...basicWindow, ...specificWindow}
@@ -123,7 +129,19 @@ export const DesktopProvider = ({ childern }: DesktopContextProps) => {
     }
 
     const removeWindow = (id: number) => {
-        setWindowsState(windowsState.filter(e=>e.id != id));
+        setWindowsState(windowsState.filter(e=>e.id !== id));
+    }
+
+    const openWindow = (type: string) => {
+        const windowsOfType = windowsState.filter(e => e.type === type)
+        
+        if (windowsOfType.length > 0) {
+            const highestZindexOfType = Math.max(...windowsOfType.map(e => e.zIndex));
+            const windowsOfTypeHighest = windowsOfType.filter(e => e.zIndex === highestZindexOfType)[0];
+            handleActiveWindow(windowsOfTypeHighest.id)
+        } else {
+            addWindow(type);
+        }
     }
 
     const changeWindowValue = (id: number, key: any, value: string | number) => {
@@ -133,7 +151,7 @@ export const DesktopProvider = ({ childern }: DesktopContextProps) => {
     }
 
     return (
-        <DesktopContext.Provider value={{windowsState, handleActiveWindow, handleCloseWindow, addWindow, removeWindow, changeWindowValue}}>
+        <DesktopContext.Provider value={{windowsState, handleActiveWindow, handleCloseWindow, addWindow, removeWindow, openWindow, changeWindowValue}}>
             {childern}
         </DesktopContext.Provider>
     )
