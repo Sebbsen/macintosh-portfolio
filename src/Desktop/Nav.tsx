@@ -66,7 +66,7 @@ export const Nav = ({ currentWindow }: NavProps) => {
                     title="View" 
                     list={[
                         {icon: undefined, text: 'Close Window', active: true},
-                        {icon: undefined, text: 'Maximize', active: true},
+                        {icon: undefined, text: 'Maximize', active: false},
                     ]}
                 />
                 <NavDropdownItem 
