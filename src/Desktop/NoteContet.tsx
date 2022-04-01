@@ -24,9 +24,7 @@ export const NoteContent = ({ defaultText, id }: NoteContentProps) => {
     }
 
     const preventBullshit = (e: any) => {
-        if (e.keyCode === 13) {
-            e.preventDefault();
-        } else if (e.target.innerText.length > 500 && e.keyCode != 8) {
+        if (e.target.innerText.length > 500 && e.keyCode != 8) {
             e.preventDefault();
         }
     }
