@@ -11,7 +11,7 @@ type NoteContentProps = {
 export const NoteContent = ({ defaultText, id }: NoteContentProps) => {
 
     const [textareaValue, setTextareaValue] = useState(defaultText);
-
+    // @ts-ignore: Property 'changeWindowValue' does not exist on type '{}'
     const {changeWindowValue} = useDesktopContext();
     
     

@@ -17,7 +17,7 @@ type WindowFrameProps = {
 export const WindowFrame = ({ active, title, content, width, height, onHandleCloseWindow, editable, id }: WindowFrameProps) => {
 
     const [varName, setVarName] = useState('defaultValue');
-
+    // @ts-ignore: Property 'changeWindowValue' does not exist on type '{}'
     const {changeWindowValue} = useDesktopContext();
 
     

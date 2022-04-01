@@ -124,7 +124,7 @@ export const DesktopProvider = ({ childern }: DesktopContextProps) => {
         }
         setNewWindowPosition({x: newWindowPosition.x + 10, y: newWindowPosition.y + 10})
         const newWindow = {...basicWindow, ...specificWindow}
-
+        // @ts-ignore:
         setWindowsState([...windowsState, newWindow])
     }
 
@@ -146,6 +146,7 @@ export const DesktopProvider = ({ childern }: DesktopContextProps) => {
 
     const changeWindowValue = (id: number, key: any, value: string | number) => {
         let windowArray = [...windowsState];
+        // @ts-ignore:
         windowArray[windowArray.findIndex((singleWindow => singleWindow.id == id))][key] = value;
         setWindowsState(windowArray)
     }
