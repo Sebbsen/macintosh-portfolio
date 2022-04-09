@@ -73,9 +73,10 @@ export const Nav = ({ currentWindow }: NavProps) => {
                 <NavDropdownItem 
                     title="Portfolio" 
                     list={[
-                        {icon: undefined, text: 'Alcina', active: true},
-                        {icon: undefined, text: 'Bette', active: true},
-                        {icon: undefined, text: 'Audi BKK', active: true},
+                        {icon: undefined, text: 'Alcina (u+i)', action: () => window.open('https://www.alcina.com/de-de','_blank'), active: true},
+                        {icon: undefined, text: 'Bette (u+i)', action: () => window.open('https://www.my-bette.com/','_blank'), active: true},
+                        {icon: undefined, text: 'Audi BKK (u+i)', action: () => window.open('https://www.audibkk.de/','_blank'), active: true},
+                        {icon: undefined, text: 'Basche liefert ', action: () => window.open('https://www.basche-liefert.de/','_blank'), active: true},
                     ]}
                 />
             </div>
