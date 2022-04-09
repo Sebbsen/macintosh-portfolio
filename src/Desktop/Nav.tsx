@@ -30,7 +30,8 @@ export const Nav = ({ currentWindow }: NavProps) => {
         windowChanged();
     }, [currentWindow])
 
-    const activeWindowId = windowsState.filter((window: any) => window.zIndex === windowsState.length)[0]?.id
+    const activeWindow = windowsState.filter((window: any) => window.zIndex === windowsState.length)[0]
+    const activeWindowId = activeWindow?.id
 
     return (
         <nav className="nav headline">
@@ -49,7 +50,7 @@ export const Nav = ({ currentWindow }: NavProps) => {
                     title="File" 
                     list={[
                         {icon: undefined, text: 'Add Note', action: () => addWindow('note'), active: true},
-                        {icon: undefined, text: 'Delete Note', action: () => removeWindow(activeWindowId), active: true},
+                        {icon: undefined, text: 'Delete Note', action: () => removeWindow(activeWindowId), active: activeWindow?.type === 'note'},
                         {icon: undefined, text: 'Copy Note', active: false},
                         {icon: undefined, text: '---', active: true},
                         {icon: undefined, text: 'Print', active: false},
@@ -65,7 +66,7 @@ export const Nav = ({ currentWindow }: NavProps) => {
                 <NavDropdownItem 
                     title="View" 
                     list={[
-                        {icon: undefined, text: 'Close Window', active: true},
+                        {icon: undefined, text: 'Close Window', action: () => removeWindow(activeWindowId), active: true},
                         {icon: undefined, text: 'Maximize', active: false},
                     ]}
                 />
