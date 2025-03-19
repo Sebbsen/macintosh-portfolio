@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import './NoteContent.scss'
 
-import { useDesktopContext } from "../DesktopContext";
+import { useDesktopContext } from "../../../DesktopContext";
 
 type NoteContentProps = {
     defaultText: string,

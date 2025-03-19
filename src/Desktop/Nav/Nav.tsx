@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import './Nav.scss'
 
-import { useDesktopContext } from "../DesktopContext";
-import helpIcon from '../icons/help-icon.svg';
-import helpWhiteIcon from '../icons/help-white-icon.svg';
-import systemIcon from '../icons/system-icon.svg';
-import systemWhiteIcon from '../icons/system-white-icon.svg';
-import note from '../icons/note-icon.svg';
-import noteWhite from '../icons/note-white-icon.svg';
-import game from '../icons/game-icon.svg';
-import gameWhite from '../icons/game-white-icon.svg';
-import threeD from '../icons/3d-icon.svg';
-import threeDWhite from '../icons/3d-white-icon.svg';
-import { NavDropdownItem } from "./NavDropdownItem";
+import { useDesktopContext } from "../../DesktopContext";
+import helpIcon from '@/icons/help-icon.svg';
+import helpWhiteIcon from '@/icons/help-white-icon.svg';
+import systemIcon from '@/icons/system-icon.svg';
+import systemWhiteIcon from '@/icons/system-white-icon.svg';
+import note from '@/icons/note-icon.svg';
+import noteWhite from '@/icons/note-white-icon.svg';
+import game from '@/icons/game-icon.svg';
+import gameWhite from '@/icons/game-white-icon.svg';
+import threeD from '@/icons/3d-icon.svg';
+import threeDWhite from '@/icons/3d-white-icon.svg';
+import { NavDropdownItem } from "./NavDropdownItem/NavDropdownItem";
 
 type NavProps = {
     currentWindow: string

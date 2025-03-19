@@ -2,11 +2,11 @@ import { useRef, useState } from "react";
 import './Desktop.scss'
 
 import { useDesktopContext } from "../DesktopContext";
-import { Nav } from "./Nav"
-import { WindowFrame } from "./Window/WindowFrame"
-import { DragDrop } from "./DragDrop"
-import { AboutMeContent } from "./Windows/AboutMeContent";
-import { NoteContent } from "./NoteContet";
+import { Nav } from "./Nav/Nav"
+import { WindowFrame } from "@/Desktop/WindowFrame/WindowFrame"
+import { DragDrop } from "./Helper/DragDrop/DragDrop"
+import { AboutMeContent } from "./Windows/AboutMeContent/AboutMeContent";
+import { NoteContent } from "./Windows/NoteContet/NoteContet";
 
 export const Desktop = () => {
     const desktopMainRef = useRef(null);

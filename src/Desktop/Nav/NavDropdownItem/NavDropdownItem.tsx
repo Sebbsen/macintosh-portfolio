@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import logo from '../icons/apple-logo.svg';
-import logoWhite from '../icons/apple-white-logo.svg';
+import logo from '@/icons/apple-logo.svg';
+import logoWhite from '@/icons/apple-white-logo.svg';
 import './NavDropdownItem.scss'
 
 type NavDropdownItemProps = {
