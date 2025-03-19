@@ -5,7 +5,7 @@ import { useDesktopContext } from "../DesktopContext";
 import { Nav } from "./Nav"
 import { WindowFrame } from "./Window/WindowFrame"
 import { DragDrop } from "./DragDrop"
-import { AboutMeContent } from "./AboutMeContent";
+import { AboutMeContent } from "./Windows/AboutMeContent";
 import { NoteContent } from "./NoteContet";
 
 export const Desktop = () => {

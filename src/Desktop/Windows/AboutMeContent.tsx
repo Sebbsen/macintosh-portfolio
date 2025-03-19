@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import profil from '../images/sebastian-gremm-profil.png';
-import helpIcon from '../icons/help-icon.svg';
-import systemIcon from '../icons/system-icon.svg';
+import profil from '@/images/sebastian-gremm-profil.png';
+import helpIcon from '@/icons/help-icon.svg';
+import systemIcon from '@/icons/system-icon.svg';
 import './AboutMeContent.scss'
 
 
